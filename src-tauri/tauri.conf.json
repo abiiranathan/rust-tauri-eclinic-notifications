@@ -12,7 +12,10 @@
 	},
 	"tauri": {
 		"allowlist": {
-			"all": false
+			"all": false,
+			"notification": {
+				"all": true
+			}
 		},
 		"bundle": {
 			"active": true,
@@ -60,10 +63,10 @@
 		"windows": [
 			{
 				"fullscreen": false,
-				"height": 600,
-				"resizable": true,
+				"height": 720,
+				"resizable": false,
 				"title": "Eclinic Notifications",
-				"width": 800
+				"width": 1000
 			}
 		]
 	}

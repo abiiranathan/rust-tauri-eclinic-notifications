@@ -1,8 +1,16 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+use std::env;
 use tauri::Manager;
 use tauri::{CustomMenuItem, SystemTray, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem};
+
+
+#[tauri::command]
+fn get_server_url() -> String {
+    let url = env::var("ECLINIC_URL").expect("ECLINIC_URL environment variable not found");
+    format!("{}", url)
+}
 
 fn main() {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
@@ -50,6 +58,7 @@ fn main() {
             }
             _ => {}
         })
+        .invoke_handler(tauri::generate_handler![get_server_url])
         .build(tauri::generate_context!())
         .expect("error while building tauri application")
         .run(|_app_handle, event| match event {
