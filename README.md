@@ -1,38 +1,38 @@
-# create-svelte
+# eclinic-notifications
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Desktop Application written in [Rust](https://www.rust-lang.org/) and [Tauri](https://tauri.app/) for handling server-sent event
+notifications from a EMR application. The frontend uses sveltekit and TS.
 
-## Creating a project
+# Development
 
-If you're seeing this, you've probably already done this step. Congrats!
+`npm run tauri dev`
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+# Build / release
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+`npm run tauri build`
 
-## Developing
+Close application from notification tray.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+# Windows
 
-```bash
-npm run dev
+Requires **Microsoft Visual Studio C++ Build Tools**
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+The easiest way is to install [Build Tools for Visual Studio 2022](https://visualstudio.microsoft.com/visual-cpp-build-tools/) . When asked which workloads to install, ensure **"C++ build tools"** and the **Windows 10 SDK** are selected.
 
-## Building
+# Linux
 
-To create a production version of your app:
+See [Prerequisites](https://tauri.app/v1/guides/getting-started/prerequisites) on the tauri website.
 
 ```bash
-npm run build
+
+sudo apt update
+sudo apt install libwebkit2gtk-4.0-dev \
+    build-essential \
+    curl \
+    wget \
+    file \
+    libssl-dev \
+    libgtk-3-dev \
+    libayatana-appindicator3-dev \
+    librsvg2-dev
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
